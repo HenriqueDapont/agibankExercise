@@ -15,6 +15,9 @@ public class FileUtil {
 
             String line = bufferReader.readLine();
             while(line != null) {
+                if(!(line.startsWith("001") || line.startsWith("002") || line.startsWith("003"))) {
+                    System.out.println("Linha " + line + " inválida");
+                }
                 list.add(line);
                 line = bufferReader.readLine();
             }
@@ -25,7 +28,7 @@ public class FileUtil {
         }
     }
 
-    public boolean writeFile(String file, List<String> content) {
+    public void writeFile(String file, List<String> content) {
         try {
             OutputStream output = new FileOutputStream(file);
             Writer writer = new OutputStreamWriter(output);
@@ -36,10 +39,7 @@ public class FileUtil {
                 bufferWriter.newLine();
             }
             bufferWriter.close();
-            return true;
-
-        } catch (Exception e) {
-            return false;
+        } catch (Exception ignored) {
         }
     }
 }

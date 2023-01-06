@@ -20,6 +20,13 @@ public class FilterData {
             return sellerContent.get(0).startsWith("003");
         }).toList().stream().map(line -> {
             List<String> sellerContent1 = List.of(line.split("ç"));
+            if(sellerContent1.size() > 4) {
+                StringBuilder sellerBuilder = new StringBuilder();
+                for(int i = 3; i < sellerContent1.size(); i++) {
+                    sellerBuilder.append(sellerContent1.get(i)).append("ç");
+                }
+                return sellerBuilder.deleteCharAt(sellerBuilder.length() -1).toString();
+            }
             return sellerContent1.get(3);
         }).toList();
     }
