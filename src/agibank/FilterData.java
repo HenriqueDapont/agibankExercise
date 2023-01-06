@@ -43,7 +43,6 @@ public class FilterData {
             return saleContent2.get(0).replace("[", "");
         }).toList().stream().map(line -> {
             List<String> saleContent3 = List.of(line.split(","));
-            System.out.println(saleContent3);
             double total = 0.0;
             for(String value : saleContent3) {
                 double partial = Double.parseDouble(value.split("-")[1]) * Double.parseDouble(value.split("-")[2]);
